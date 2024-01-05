@@ -6,7 +6,6 @@ builds:
   - linux
   goarch:
   - amd64
-  - arm64
   tags:
   - lambda.norpc
 archives:
@@ -20,3 +19,4 @@ checksum:
   algorithm: sha256
 release:
   mode: keep-existing
+  skip_upload: false
