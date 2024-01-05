@@ -1,0 +1,22 @@
+project_name: myproject
+builds:
+- binary: bootstrap
+  main: main.go
+  goos:
+  - linux
+  goarch:
+  - amd64
+  - arm64
+  tags:
+  - lambda.norpc
+archives:
+  - name_template: "{{ .ProjectName }}_{{ .Tag }}_{{ .Os }}_{{ .Arch }}"
+    format: zip
+    builds:
+      - default
+    strip_parent_binary_folder: true
+checksum:
+  name_template: 'sha256.txt'
+  algorithm: sha256
+release:
+  mode: append
