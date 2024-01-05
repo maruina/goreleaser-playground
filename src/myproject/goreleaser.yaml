@@ -1,6 +1,7 @@
 project_name: myproject
 builds:
-- binary: bootstrap
+- id: bootstrap
+  binary: bootstrap
   main: main.go
   goos:
   - linux
@@ -9,11 +10,11 @@ builds:
   tags:
   - lambda.norpc
 archives:
-  - name_template: "{{ .ProjectName }}_{{ .Tag }}_{{ .Os }}_{{ .Arch }}"
-    format: zip
-    builds:
-      - default
-    strip_parent_binary_folder: true
+- name_template: "{{ .ProjectName }}_{{ .Tag }}_{{ .Os }}_{{ .Arch }}"
+  format: zip
+  builds:
+  - bootstrap
+  strip_parent_binary_folder: true
 checksum:
   name_template: 'sha256.txt'
   algorithm: sha256
